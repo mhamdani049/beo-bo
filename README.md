@@ -1,11 +1,104 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+# Laravel Docker Starter Kit
+- Laravel v10.23.1
+- PHP v8.2.10
+- MySQL v8.1
+- MariaDB v10.11
+- Mailpit v1.8.4
+- Node.js v18.17.1
+- NPM v10.1.0
+- Yarn v1.22.19
+- Vite v4.4.9
+
+# Requirements
+- Stable version of [Docker](https://docs.docker.com/engine/install/)
+- Compatible version of [Docker Compose](https://docs.docker.com/compose/install/#install-compose)
+
+# How To Deploy
+
+### For first time only !
+- `docker-compose up -d`
+- `docker-compose exec php bash`
+- `composer setup`
+
+### From the second time onwards
+- `docker-compose up -d`
+- `docker-compose exec php bash`
+
+# Notes
+
+### By using the archive for ui material
+
+1. In your application's root create a **presets** folder
+2. Download the archive of the repo and unzip it
+3. Copy and paste the downloaded folder in presets (created in step 2) and rename it to **material**
+4. Open `composer.json` file 
+5. Add `"LaravelFrontendPresets\\MaterialPreset\\": "presets/material/src"` to `autoload/psr-4` and to `autoload-dev/psr-4`
+6. Add `LaravelFrontendPresets\MaterialPreset\MaterialPresetServiceProvider::class` to `config/app.php` file
+7. Type in your terminal: `composer require laravel/ui`
+8. In your terminal run `composer dump-autoload`
+9. Run `php artisan ui material` command to install the Argon preset. This will install all the necessary assets and also the custom auth views, it will also add the auth route in `routes/web.php`
+(NOTE: If you run this command several times, be sure to clean up the duplicate Auth entries in routes/web.php)
+10. Add in your **.env** file the info for your database
+11. Run `php artisan migrate:fresh --seed` to create basic users table
+
+### Basic docker compose commands
+- Build or rebuild services
+    - `docker-compose build`
+- Create and start containers
+    - `docker-compose up -d`
+- Stop and remove containers, networks
+    - `docker-compose down`
+- Stop all services
+    - `docker-compose stop`
+- Restart service containers
+    - `docker-compose restart`
+- Run a command inside a container
+    - `docker-compose exec [container] [command]`
+
+### Useful Laravel Commands
+- Display basic information about your application
+    - `php artisan about`
+- Remove the configuration cache file
+    - `php artisan config:clear`
+- Flush the application cache
+    - `php artisan cache:clear`
+- Clear all cached events and listeners
+    - `php artisan event:clear`
+- Delete all of the jobs from the specified queue
+    - `php artisan queue:clear`
+- Remove the route cache file
+    - `php artisan route:clear`
+- Clear all compiled view files
+    - `php artisan view:clear`
+- Remove the compiled class file
+    - `php artisan clear-compiled`
+- Remove the cached bootstrap files
+    - `php artisan optimize:clear`
+- Delete the cached mutex files created by scheduler
+    - `php artisan schedule:clear-cache`
+- Flush expired password reset tokens
+    - `php artisan auth:clear-resets`
+
+### Laravel Pint (Code Style Fixer | PHP-CS-Fixer)
+- Format all files
+    - `./vendor/bin/pint`
+- Format specific files or directories
+    - `./vendor/bin/pint app/Models`
+    - `./vendor/bin/pint app/Models/User.php`
+- Format all files with preview
+    - `./vendor/bin/pint -v`
+- Format uncommitted changes according to Git
+    - `./vendor/bin/pint --dirty`
+- Inspect all files
+  - `./vendor/bin/pint --test`
+
+# TODO
+- Improve environment 
+- Add more containers
+
+---
 
 ## About Laravel
 

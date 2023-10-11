@@ -1,8 +1,7 @@
 <?php
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-
-use App\Http\Controllers\Api\v1\HomeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,6 +14,6 @@ use App\Http\Controllers\Api\v1\HomeController;
 |
 */
 
-Route::group(['prefix' => 'v1', 'middleware' => ['cors', 'jwt.verify']], function () {
-        Route::get('home/welcome', [HomeController::class, 'welcome']);
+Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
+    return $request->user();
 });

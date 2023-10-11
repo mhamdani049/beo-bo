@@ -18,6 +18,14 @@ class Handler extends ExceptionHandler
         'password_confirmation',
     ];
 
+    public function render($request, Throwable $e)
+    {
+        if ($e instanceof \Symfony\Component\HttpKernel\Exception\NotFoundHttpException) {
+            return redirect('/');
+        }
+        return parent::render($request, $e);
+    }
+
     /**
      * Register the exception handling callbacks for the application.
      */
