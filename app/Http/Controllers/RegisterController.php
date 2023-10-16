@@ -19,7 +19,7 @@ class RegisterController extends Controller
         $credentials = request()->only('name', 'phone_number','email', 'password');
         $validator = Validator::make($credentials, [
             'name' => 'required|max:255',
-            'phone_number' => 'required|numeric|max:255',
+            'phone_number' => 'required|numeric',
             'email' => 'required|email|max:255|unique:users,email',
             'password' => 'required|min:5|max:255',
         ]);

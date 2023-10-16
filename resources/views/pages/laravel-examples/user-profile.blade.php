@@ -89,7 +89,50 @@
                         @endif
                         <form method='POST' action='{{ route('user-profile') }}'>
                             @csrf
-                            
+                            <div class="row">
+                                
+                                <div class="mb-3 col-md-6">
+                                    <label class="form-label">Email address</label>
+                                    <input type="email" name="email" class="form-control border border-2 p-2" >
+                                    @error('email')
+                                <p class='text-danger inputerror'>{{ $message }} </p>
+                                @enderror
+                                </div>
+                                
+                                <div class="mb-3 col-md-6">
+                                    <label class="form-label">Name</label>
+                                    <input type="text" name="name" class="form-control border border-2 p-2" >
+                                    @error('name')
+                                <p class='text-danger inputerror'>{{ $message }} </p>
+                                @enderror
+                                </div>
+                               
+                                <div class="mb-3 col-md-6">
+                                    <label class="form-label">Phone</label>
+                                    <input type="number" name="phone" class="form-control border border-2 p-2" >
+                                    @error('phone')
+                                    <p class='text-danger inputerror'>{{ $message }} </p>
+                                    @enderror
+                                </div>
+                                
+                                <div class="mb-3 col-md-6">
+                                    <label class="form-label">Location</label>
+                                    <input type="text" name="location" class="form-control border border-2 p-2" >
+                                    @error('location')
+                                    <p class='text-danger inputerror'>{{ $message }} </p>
+                                    @enderror
+                                </div>
+                                
+                                <div class="mb-3 col-md-12">
+                                    <label for="floatingTextarea2">About</label>
+                                    <textarea class="form-control border border-2 p-2"
+                                        placeholder=" Say something about yourself" id="floatingTextarea2" name="about"
+                                        rows="4" cols="50"></textarea>
+                                        @error('about')
+                                        <p class='text-danger inputerror'>{{ $message }} </p>
+                                        @enderror
+                                </div>
+                            </div>
                             <button type="submit" class="btn bg-gradient-dark">Submit</button>
                         </form>
 
