@@ -33,23 +33,21 @@
                                             @csrf
                                             <div class="input-group input-group-outline mt-3">
                                                 <label class="form-label">Name</label>
-                                                <input type="text" class="form-control" name="name"
-                                                    value="{{ old('name') }}">
+                                                <input type="text" class="form-control" name="name" >
                                             </div>
                                             @error('name')
                                             <p class='text-danger inputerror'>{{ $message }} </p>
                                             @enderror
                                             <div class="input-group input-group-outline mt-3">
                                                 <label class="form-label">Phone Number</label>
-                                                <input type="number" class="form-control" name="phone_number" value="{{ old('phone_number') }}">
+                                                <input type="number" class="form-control" name="phone_number" >
                                             </div>
                                             @error('phone_number')
                                             <p class='text-danger inputerror'>{{ $message }} </p>
                                             @enderror
                                             <div class="input-group input-group-outline mt-3">
                                                 <label class="form-label">Email</label>
-                                                <input type="email" class="form-control" name="email"
-                                                    value="{{ old('email') }}">
+                                                <input type="email" class="form-control" name="email" >
                                             </div>
                                             @error('email')
                                             <p class='text-danger inputerror'>{{ $message }} </p>

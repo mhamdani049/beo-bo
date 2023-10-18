@@ -56,7 +56,11 @@
             "php artisan config:cache",
             "npm install",
             "npm run build",
-            "chown -R www-data:www-data ."
+            "chown -R www-data:www-data .",
+            "php artisan config:clear"
+        ],
+        "clear-cache":[
+            "php artisan config:clear"
         ]
     },
     "extra": {
