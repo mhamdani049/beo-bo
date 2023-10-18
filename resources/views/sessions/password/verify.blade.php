@@ -63,6 +63,9 @@
                                     @error('email')
                                     <p class='text-danger inputerror'>{{ $message }} </p>
                                     @enderror
+                                    @error('error_response')
+                                    <p class='text-danger inputerror'>{{ $message }} </p>
+                                    @enderror
                                     <div class="text-center">
                                         <button type="submit"
                                             class="btn bg-gradient-primary w-100 my-4 mb-2">Send</button>

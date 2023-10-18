@@ -58,18 +58,31 @@ class SessionsController extends Controller
     }
 
     public function show(){
-        request()->validate([
+
+        $credentials = request()->only('email');
+        $validator = Validator::make($credentials, [
             'email' => 'required|email',
         ]);
 
-        $status = Password::sendResetLink(
-            request()->only('email')
-        );
-    
-        return $status === Password::RESET_LINK_SENT
-                    ? back()->with(['status' => __($status)])
-                    : back()->withErrors(['email' => __($status)]);
+        if ($validator->fails()) {
+            return back()->withErrors($validator->messages())->withInput();
+        }
+
+        $params = request()->input();
+
+        $response = Http::withHeaders([
+            'Content-Type' => 'application/json'
+        ])->post(env('API_AUTH_HOST').'auth/forgot', [
+            "email" => $params["email"]
+        ])->json();
         
+        if(!$response || $response["status"] == "error"){
+            throw ValidationException::withMessages([
+                'error_response' => $response["message"]
+            ]);
+        }
+
+        return back()->with(['status' => "link already send to your email"]);
     }
 
     public function update(){
