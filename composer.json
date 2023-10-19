@@ -67,6 +67,7 @@
             "php -r \"file_exists('.env') || copy('.env.example', '.env');\"",
             "php artisan config:cache",
             "chown -R www-data:www-data .",
+            "rm -rf bootstrap/cache/*.php",
             "php artisan config:clear"
         ]
     },

@@ -62,9 +62,9 @@ Route::group(['middleware' => 'auth'], function () {
 		return view('pages.static-sign-up');
 	})->name('static-sign-up');
 	Route::get('/user-management', function () {
-		return view('pages.laravel-examples.user-management');
+		return view('pages.user.user-management');
 	})->name('user-management');
 	Route::get('/user-profile', function () {
-		return view('pages.laravel-examples.user-profile');
+		return view('pages.user.user-profile');
 	})->name('user-profile');
 });
